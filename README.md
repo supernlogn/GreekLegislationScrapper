@@ -1,17 +1,57 @@
-# Greek Legislation Scraper
+<div align="center">
 
-[![CI](https://github.com/supernlogn/GreekLegislationScrapper/actions/workflows/ci.yml/badge.svg)](https://github.com/supernlogn/GreekLegislationScrapper/actions/workflows/ci.yml)
-[![Node.js 20+](https://img.shields.io/badge/node-%3E%3D20-brightgreen)](https://nodejs.org/)
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](LICENSE)
+# ⚖️ Greek Legislation Scraper
 
-Scrapes the Greek Government Gazette legislation catalogue at [search.et.gr](https://search.et.gr/el/search-legislation/), downloads every PDF listed for a given year, and keeps a local markdown index. Includes a daily checker that detects newly published PDFs and downloads only what is new.
+<img src="https://img.shields.io/badge/%CE%95%CF%86%CE%B7%CE%BC%CE%B5%CF%81%CE%AF%CE%B4%CE%B1%20%CF%84%CE%B7%CF%82%20%CE%9A%CF%85%CE%B2%CE%B5%CF%81%CE%BD%CE%AE%CF%83%CE%B5%CF%89%CF%82-0D5EAF?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAxTDMgNXY2YzAgNS41NSAzLjg0IDEwLjc0IDkgMTIgNS4xNi0xLjI2IDktNi40NSA5LTEyVjVsLTktNHoiLz48L3N2Zz4=" alt="Greek Government Gazette"/>
+&nbsp;
 
-## Requirements
+[![CI](https://img.shields.io/github/actions/workflow/status/supernlogn/GreekLegislationScrapper/ci.yml?style=for-the-badge&label=CI&logo=github)](https://github.com/supernlogn/GreekLegislationScrapper/actions/workflows/ci.yml)
+&nbsp;
+[![Node.js 20+](https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+&nbsp;
+[![License: MIT](https://img.shields.io/badge/License-MIT-003580?style=for-the-badge)](LICENSE)
 
-- [Node.js](https://nodejs.org/) 20+
-- npm 9+
+---
 
-## Setup
+> **Automated retrieval and archival of official Greek legislation from the**  
+> **Government Gazette portal — [search.et.gr](https://search.et.gr/el/search-legislation/)**
+
+---
+
+</div>
+
+Scrapes the Greek Government Gazette (Εφημερίδα της Κυβερνήσεως) legislation catalogue at [search.et.gr](https://search.et.gr/el/search-legislation/), downloads every PDF listed for a given year, and maintains a local markdown index. A daily checker detects newly published PDFs and retrieves only new entries, enabling up-to-date legal archives with minimal overhead.
+
+---
+
+## 📋 Table of Contents
+
+- [⚖️ Greek Legislation Scraper](#️-greek-legislation-scraper)
+  - [📋 Table of Contents](#-table-of-contents)
+  - [📦 Requirements](#-requirements)
+  - [🛠️ Setup](#️-setup)
+  - [📜 Scripts](#-scripts)
+    - [`scrape:all` — Download every year from 1833 to present](#scrapeall--download-every-year-from-1833-to-present)
+    - [`scrape:table` — Full scrape for a given year](#scrapetable--full-scrape-for-a-given-year)
+    - [`check:new` — Daily check for newly published PDFs](#checknew--daily-check-for-newly-published-pdfs)
+  - [🗓️ Scheduling Daily Checks (Windows)](#️-scheduling-daily-checks-windows)
+  - [🗂️ Project Structure](#️-project-structure)
+  - [🧪 Testing](#-testing)
+  - [Contributing](#contributing)
+  - [Notes](#notes)
+
+---
+
+## 📦 Requirements
+
+| Dependency | Version |
+|---|---|
+| [Node.js](https://nodejs.org/) | ≥ 20 |
+| npm | ≥ 9 |
+
+---
+
+## 🛠️ Setup
 
 ```bash
 git clone https://github.com/supernlogn/GreekLegislationScrapper.git
@@ -22,7 +62,7 @@ npx playwright install chromium
 
 ---
 
-## Scripts
+## 📜 Scripts
 
 ### `scrape:all` — Download every year from 1833 to present
 
@@ -99,7 +139,7 @@ The markdown table looks like:
 
 ### `check:new` — Daily check for newly published PDFs
 
-Compares the live website against your local listing and downloads only PDFs that are not already present. New rows are prepended to the top of the existing markdown file.
+Compares the live website against your local listing and downloads only PDFs not already present. New rows are **prepended** to the top of the existing markdown file, ensuring the most recent legislation always appears first.
 
 ```bash
 npm run check:new
@@ -136,7 +176,7 @@ No new PDFs found. Listing is up to date.
 
 ---
 
-## Scheduling daily checks (Windows)
+## 🗓️ Scheduling Daily Checks (Windows)
 
 Run the setup script once to register a Windows Task Scheduler task that executes `npm run check:new` every day at 08:00:
 
@@ -161,7 +201,7 @@ Unregister-ScheduledTask -TaskName "GreekLegislationDailyCheck" -Confirm:$false
 
 ---
 
-## Project structure
+## 🗂️ Project Structure
 
 ```
 scripts/
@@ -181,7 +221,7 @@ downloads/
   2026/                   ← downloaded PDFs
 ```
 
-## Testing
+## 🧪 Testing
 
 Unit tests cover all pure utility functions (text normalisation, markdown building, PDF filename diffing). They run without a browser and complete in under a second.
 
@@ -197,6 +237,16 @@ npm run typecheck
 ```
 
 Tests live in [scripts/\_\_tests\_\_/utils.test.ts](scripts/__tests__/utils.test.ts). CI runs them against Node.js 20 and 22 on every push and pull request via [GitHub Actions](.github/workflows/ci.yml).
+
+---
+
+<div align="center">
+
+*Built for legal professionals who require reliable, timestamped archives of Greek statutory law.*
+
+🏛️ &nbsp; ⚖️ &nbsp; 📜
+
+</div>
 
 ---
 
